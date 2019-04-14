@@ -1,1 +1,1 @@
-DATA STRUCTUTRS a.k.a. CS61B@Berkeley
+CS61B@Berkeley, Spring 2018
