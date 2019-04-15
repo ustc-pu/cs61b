@@ -32,7 +32,15 @@ public class NBody {
 	}
 
 	public static void main(String[] args) {
-		//Double ra = NBody.readRadius("/data/planets.txt");
-		//System.out.println(ra);
+		Double T = Double.parseDouble(args[0]);
+		Double dt = Double.parseDouble(args[1]);
+		String filename = args[2];
+		System.out.println(T);
+		System.out.println(filename);
+
+		StdDraw.setScale(-100, 100);
+		StdDraw.clear();
+		StdDraw.picture(0, 0, "/images/starfield.jpg");
+		StdDraw.show();
 	}
 }
