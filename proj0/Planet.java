@@ -53,6 +53,27 @@ public class Planet{
 		return f * yFactor;
 	}
 
+	public double calcNetForceExertedByX(Planet[] allplanets) {
+		double xForce = 0;
+		for(Planet p : allplanets) {
+			if( !p.equals(this)) {
+				xForce = xForce + this.calcForceExertedByX(p);
+			}
+		}
+		return xForce;
+	}
+
+	public double calcNetForceExertedByY(Planet[] allplanets) {
+		double yForce = 0;
+		// foreach 
+		for(Planet p : allplanets) {
+			if( !p.equals(this)) {
+				yForce = yForce + this.calcForceExertedByY(p);
+			}
+		}
+		return yForce;
+	}	
+
 	public void update(double dt, double fX, double fY) {
 		double xAcc = fX / this.mass;
 		//System.out.println(xAcc);
