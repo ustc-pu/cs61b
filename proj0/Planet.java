@@ -49,4 +49,10 @@ public class Planet{
 		xxPos = this.xxPos + xxVel * dt;
 		yyPos = this.yyPos + yyVel * dt;
 	}
+
+	public void draw() {
+		//StdDraw.clear();
+		StdDraw.picture(this.xxPos, this.yyPos, "/images/"+this.imgFileName);
+		StdDraw.show();
+	}
 }
