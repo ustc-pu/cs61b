@@ -39,6 +39,20 @@ public class Planet{
 		return G*this.mass*p.mass/(dist*dist);
 	}
 
+	public double calcForceExertedByX(Planet p) {
+		double f = this.calcForceExertedBy(p);
+		double dist = this.calcDistance(p);
+		double xFactor = (p.xxPos - this.xxPos) / dist;
+		return f * xFactor;
+	}
+
+	public double calcForceExertedByY(Planet p) {
+		double f = this.calcForceExertedBy(p);
+		double dist = this.calcDistance(p);
+		double yFactor = (p.yyPos - this. yyPos) / dist;
+		return f * yFactor;
+	}
+
 	public void update(double dt, double fX, double fY) {
 		double xAcc = fX / this.mass;
 		//System.out.println(xAcc);
