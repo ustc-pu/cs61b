@@ -35,20 +35,39 @@ public class NBody {
 		Double T = Double.parseDouble(args[0]);
 		Double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
-		//System.out.println(T);
-		//System.out.println(filename);
-
-		//Please set the scale to the radius of the universe
-		Double radius = NBody.readRadius(filename);
-		StdDraw.setScale(0-radius, radius);
-		StdDraw.clear();
-		StdDraw.picture(0, 0, "/images/starfield.jpg");
-		StdDraw.show();
 
 		Planet[] p = NBody.readPlanets(filename);
-		for(int i=0; i<5; i++) {
-			System.out.println(p[i].imgFileName);
-			p[i].draw();
+		
+		for(double t=0; t <= T; t = t+dt) {
+			Double[] xForces = new Double[5];
+			Double[] yForces = new Double[5];
+
+			for(int i=0; i<5; i++) {
+				xForces[i] = p[i].calcNetForceExertedByX(p);
+				yForces[i] = p[i].calcNetForceExertedByY(p);
+			}
+			for(int i=0; i<5; i++) {
+				p[i].update(dt, xForces[i], yForces[i]);
+			}
+
+			/**
+			Draw the background of the universe
+			Please set the scale to the radius of the universe
+			Use the method readRadius() abve
+			*/
+			Double radius = NBody.readRadius(filename);
+			StdDraw.setScale(0-radius, radius);
+			StdDraw.clear();
+			StdDraw.picture(0, 0, "/images/starfield.jpg");
+			StdDraw.show();
+
+			for(int i=0; i<5; i++) {
+				//System.out.println(p[i].imgFileName);
+				p[i].draw();
+			}
+
+			StdDraw.enableDoubleBuffering();
+			StdDraw.pause(10);
 		}		
 	}
 }
