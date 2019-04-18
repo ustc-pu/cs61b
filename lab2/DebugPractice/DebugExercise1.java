@@ -4,6 +4,8 @@
  */
 public class DebugExercise1 {
     public static int divideThenRound(int top, int bottom) {
+        // the parameter of round() should be float
+        //we invert the int into float
         float quotient = (float)top / (float)bottom;
         int result = Math.round(quotient);
         return result;
