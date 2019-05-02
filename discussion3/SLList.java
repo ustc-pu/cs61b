@@ -87,13 +87,26 @@ public class SLList {
             return p;
         }
         else {
-            IntNode temp = reverse(p.next);
+            IntNode reversed = reverse(p.next);
             p.next.next = p;
             p.next = null;
-            return temp;
+            return reversed;
         }
     }
 
+    public void reverseInteratively() {
+        if(sentinel.next == null || sentinel == null) {
+            return ;
+        }
+        IntNode cur = sentinel.next;
+        sentinel.next = null;
+        while(cur != null) {
+            IntNode temp = cur.next;
+            cur.next = sentinel;
+            sentinel = cur;
+            cur = temp;
+        }
+    }
 
     /** Adds x to the end of the list. 
     public void addLast(int x) {
@@ -120,7 +133,7 @@ public class SLList {
         System.out.println(L.size());
         L.addFirst(10);
         L.insert(5,1);
-        L.reverse();
+        L.reverseInteratively();
         System.out.println(L.getFirst());
     }
 }
