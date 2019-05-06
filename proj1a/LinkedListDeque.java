@@ -1,8 +1,8 @@
 public class LinkedListDeque<T> {
-    public class Node{
-        public Node pre;
-        public T item;
-        public Node next;
+    public class Node {
+        private Node pre;
+        private T item;
+        private Node next;
 
         private Node(Node p, T g, Node n) {
             pre = p;
@@ -61,12 +61,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if(size == 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (size == 0);
     }
 
     public int size() {
@@ -76,8 +71,8 @@ public class LinkedListDeque<T> {
     public T get(int index) {
         Node temp = sentinel;
         int count = 0;
-        while(temp.next != sentinel) {
-            if(count == index) {
+        while (temp.next != sentinel) {
+            if (count == index) {
                 return temp.next.item;
             }
             temp = temp.next;
@@ -88,10 +83,9 @@ public class LinkedListDeque<T> {
 
     private T getRecursive(int index, Node p) {
         Node temp = p;
-        if(index == 0) {
+        if (index == 0) {
             return temp.next.item;
-        }
-        else {
+        } else {
             return getRecursive(index - 1, temp.next);
         }
     }
@@ -116,11 +110,12 @@ public class LinkedListDeque<T> {
         sentinel.pre = sentinel;
         size = 0;
 
-        for(int i = 0; i < other.size(); i = i + 1) {
+        for (int i = 0; i < other.size(); i = i + 1) {
             addLast(other.get(i));
         }
 
     }
+
 /**
     public static void main(String[] args) {
         LinkedListDeque<String> d = new LinkedListDeque();
