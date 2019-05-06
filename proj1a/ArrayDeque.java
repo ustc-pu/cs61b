@@ -7,8 +7,8 @@ public class ArrayDeque<T> {
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
-        nextFirst = 7;
-        nextLast = 0;
+        nextFirst = 0;
+        nextLast = 1;
         size = 0;
         loadFactor = 0;
     }
@@ -31,6 +31,9 @@ public class ArrayDeque<T> {
         }
     }
 
+    /*
+    * @source https://www.jianshu.com/p/5763d9c1c321
+    * */
     public void addFirst(T item) {
         //resize();
 /*        if (nextFirst <= 0) {
@@ -89,6 +92,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
+
     public T removeLast() {
 /*        if (nextLast - 1 < 0) {
             nextLast = (items.length - 1);
@@ -102,8 +106,10 @@ public class ArrayDeque<T> {
         return temp;
     }
 
+    //random index or shift from first element?
     public T get(int index) {
         if (index >= 0 && index < size) {
+            index = (index + nextFirst + 1) & (items.length - 1);
             T temp = items[index];
             return temp;
         } else {
@@ -116,11 +122,14 @@ public class ArrayDeque<T> {
     public static void main(String[] args)  {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         //System.out.println(a.items.length);
-        for (int i = 0; i < 8; i++) {
+/*        for (int i = 0; i < 8; i++) {
             a.addLast(i);
-        }
+        }*/
+        a.addLast(0);
+        a.addFirst(1);
+        a.addLast(2);
         a.printDeque();
-        System.out.println(a.get(0));
+        System.out.println(a.get(2));
 //        a.removeFirst();
 //        a.printDeque();
 //        a.removeLast();
