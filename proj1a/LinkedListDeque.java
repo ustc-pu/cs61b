@@ -136,6 +136,7 @@ public class LinkedListDeque<T> {
         //d.removeFirst();
         //d.removeFirst();
         System.out.println(d.getRecursive(0));
- */
+
     }
+ */
 }
