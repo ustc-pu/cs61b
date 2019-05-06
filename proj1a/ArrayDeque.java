@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int nextLast;
     private double loadFactor;
 
-    public ArrayDeque() {
+    private ArrayDeque() {
         items = (T[]) new Object[8];
         nextFirst = 5;
         nextLast = 6;
@@ -41,7 +41,7 @@ public class ArrayDeque<T> {
         size = size + 1;
     }
 
-    public void addLast(T item) {
+    private void addLast(T item) {
         //resize();
         if (nextLast >= items.length) {
             nextLast = 0;
@@ -51,16 +51,16 @@ public class ArrayDeque<T> {
         size = size + 1;
     }
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return (size == 0);
     }
 
 
-    public int size() {
+    private int size() {
         return size;
     }
 
-    public void printDeque() {
+    private void printDeque() {
         int i = 0;
         for (i = nextFirst + 1; i < nextLast || i < items.length; i++) {
             System.out.print(items[i] + " ");
@@ -72,11 +72,11 @@ public class ArrayDeque<T> {
                 j = j + 1;
             }
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
-    public T removeFirst() {
-        T temp = null;
+    private T removeFirst() {
+        T temp;
         //items[nextFirst + 1] = null;
         if (nextFirst + 1 < items.length) {
             nextFirst = nextFirst + 1;
@@ -89,8 +89,8 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    public T removeLast() {
-        T temp = null;
+    private T removeLast() {
+        T temp;
         if (nextLast - 1 < 0) {
             nextLast = items.length - 1;
         } else {
@@ -102,9 +102,9 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    public T get(int index) {
-        if (index >= 0 && index <= items.length) {
-            T temp = items[index - 1];
+    private T get(int index) {
+        if (index >= 0 && index < size) {
+            T temp = items[index];
             return temp;
         } else {
             return null;
@@ -116,11 +116,25 @@ public class ArrayDeque<T> {
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         //System.out.println(a.items.length);
-        for (int i = 0; i < 7; i++) {
-            a.addLast(1);
+        for (int i = 0; i < 8; i++) {
+            a.addLast(i);
         }
         a.printDeque();
         System.out.println(a.isEmpty());
+        System.out.println(a.removeFirst());
+        a.removeFirst();
+        a.printDeque();
+        a.removeLast();
+        a.printDeque();
+        a.removeLast();
+        a.printDeque();
+        a.removeLast();
+        a.printDeque();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.printDeque();
+        //System.out.println(t);
 /*        a.addFirst(1);
         System.out.println(a.isEmpty());
         a.addLast(2);
