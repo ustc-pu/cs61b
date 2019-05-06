@@ -1,17 +1,25 @@
 public class ArrayDeque<T> {
     private int size;
-    T[] items = (T[]) new Object[8];
-    int nextFirst = 5;
-    int nextLast = 6;
+    private T[] items;
+    private int nextFirst;
+    private int nextLast;
     private double loadFactor;
 
     public ArrayDeque() {
+        items = (T[]) new Object[8];
+        nextFirst = 5;
+        nextLast = 6;
         size = 0;
         loadFactor = 0;
     }
 
     public ArrayDeque(ArrayDeque other) {
-
+        ArrayDeque<T> a = new ArrayDeque<>();
+        a.size = 0;
+        a.loadFactor = 0;
+        for(int i = 0; i < other.size(); i++) {
+            addLast((T)other.get(i));
+        }
     }
 
     public void resize() {
