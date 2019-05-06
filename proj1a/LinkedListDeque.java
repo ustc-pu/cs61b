@@ -1,10 +1,10 @@
-public class LinkedListDeque<Gene> {
+public class LinkedListDeque<T> {
     public class Node{
         public Node pre;
-        public Gene item;
+        public T item;
         public Node next;
 
-        private Node(Node p, Gene g, Node n) {
+        private Node(Node p, T g, Node n) {
             pre = p;
             item = g;
             next = n;
@@ -21,39 +21,39 @@ public class LinkedListDeque<Gene> {
         size = 0;
     }
 
-    public LinkedListDeque(Gene g) {
+    public LinkedListDeque(T g) {
         sentinel = new Node(null, g, null);
         sentinel.next = sentinel;
         sentinel.pre = sentinel;
         size = 0;
     }
 
-    public void addFirst(Gene g) {
+    public void addFirst(T g) {
         Node temp = new Node(sentinel, g, sentinel.next);
         sentinel.next = temp;
         sentinel.next.next.pre = temp;
         size += 1;
     }
 
-    public void addLast(Gene g) {
+    public void addLast(T g) {
         Node temp = new Node(sentinel.pre, g, sentinel);
         sentinel.pre.next = temp;
         sentinel.pre = temp;
         size += 1;
     }
 
-    public Gene removeFirst() {
+    public T removeFirst() {
         Node temp = sentinel.next;
-        Gene g = temp.item;
+        T g = temp.item;
         sentinel.next = temp.next;
         temp.next.pre = sentinel;
         size -= 1;
         return g;
     }
 
-    public Gene removeLast() {
+    public T removeLast() {
         Node temp = sentinel.pre;
-        Gene g = temp.item;
+        T g = temp.item;
         sentinel.pre = temp.pre;
         temp.pre.next = sentinel;
         size -= 1;
@@ -73,7 +73,7 @@ public class LinkedListDeque<Gene> {
         return size;
     }
 
-    public Gene get(int index) {
+    public T get(int index) {
         Node temp = sentinel;
         int count = 0;
         while(temp.next != sentinel) {
@@ -86,7 +86,7 @@ public class LinkedListDeque<Gene> {
         return null;
     }
 
-    private Gene getRecursive(int index, Node p) {
+    private T getRecursive(int index, Node p) {
         Node temp = p;
         if(index == 0) {
             return temp.next.item;
@@ -96,7 +96,7 @@ public class LinkedListDeque<Gene> {
         }
     }
 
-    public Gene getRecursive(int index) {
+    public T getRecursive(int index) {
         return getRecursive(index, sentinel);
     }
 
@@ -110,7 +110,7 @@ public class LinkedListDeque<Gene> {
     }
 
     //@source https://www.youtube.com/watch?v=JNroRiEG7U4
-    public LinkedListDeque(LinkedListDeque<Gene> other) {
+    public LinkedListDeque(LinkedListDeque<T> other) {
         sentinel = new Node(null, null, null);
         sentinel.next = sentinel;
         sentinel.pre = sentinel;
@@ -121,7 +121,7 @@ public class LinkedListDeque<Gene> {
         }
 
     }
-
+/**
     public static void main(String[] args) {
         LinkedListDeque<String> d = new LinkedListDeque();
         d.addFirst("2");
@@ -136,5 +136,6 @@ public class LinkedListDeque<Gene> {
         //d.removeFirst();
         //d.removeFirst();
         System.out.println(d.getRecursive(0));
+ */
     }
 }
