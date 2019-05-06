@@ -76,29 +76,27 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        T temp;
         //items[nextFirst + 1] = null;
-        if (nextFirst + 1 < items.length) {
+/*        if (nextFirst + 1 < items.length) {
             nextFirst = nextFirst + 1;
         } else {
             nextFirst = 0;
-        }
-        temp = items[nextFirst];
+        }*/
+        nextFirst = (nextFirst + 1) & (items.length - 1);
+        T temp = items[nextFirst];
         items[nextFirst] = null;
         size = size - 1;
         return temp;
     }
 
-    public T removeLast() throws IllegalAccessException {
-        T temp;
-        if (size == 0) {
-            throw new IllegalAccessException("removeLast failed, found size = 0");
-        } else if (nextLast - 1 < 0) {
-            nextLast = items.length - 1;
+    public T removeLast() {
+/*        if (nextLast - 1 < 0) {
+            nextLast = (items.length - 1);
         } else {
             nextLast = nextLast - 1;
-        }
-        temp = items[nextLast];
+        }*/
+        nextLast = (nextLast - 1) & (items.length - 1);
+        T temp = items[nextLast];
         items[nextLast] = null;
         size = size - 1;
         return temp;
@@ -115,14 +113,12 @@ public class ArrayDeque<T> {
 
 
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args)  {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         //System.out.println(a.items.length);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             a.addLast(i);
         }
-        a.addFirst(-1);
-        a.addFirst(-2);
         a.printDeque();
         System.out.println(a.get(0));
 //        a.removeFirst();
