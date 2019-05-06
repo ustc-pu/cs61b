@@ -7,8 +7,8 @@ public class ArrayDeque<T> {
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
-        nextFirst = 5;
-        nextLast = 6;
+        nextFirst = 7;
+        nextLast = 0;
         size = 0;
         loadFactor = 0;
     }
@@ -33,21 +33,21 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         //resize();
-        if (nextFirst <= 0) {
+/*        if (nextFirst <= 0) {
             nextFirst = items.length - 1;
-        }
+        }*/
         items[nextFirst] = item;
-        nextFirst = nextFirst - 1;
+        nextFirst = (nextFirst - 1) & (items.length - 1);
         size = size + 1;
     }
 
     public void addLast(T item) {
         //resize();
-        if (nextLast >= items.length) {
+/*        if (nextLast >= items.length) {
             nextLast = 0;
-        }
+        }*/
         items[nextLast] = item;
-        nextLast = nextLast + 1;
+        nextLast = (nextLast + 1) & (items.length - 1);
         size = size + 1;
     }
 
@@ -89,9 +89,11 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    public T removeLast() {
+    public T removeLast() throws IllegalAccessException {
         T temp;
-        if (nextLast - 1 < 0) {
+        if (size == 0) {
+            throw new IllegalAccessException("removeLast failed, found size = 0");
+        } else if (nextLast - 1 < 0) {
             nextLast = items.length - 1;
         } else {
             nextLast = nextLast - 1;
@@ -113,27 +115,30 @@ public class ArrayDeque<T> {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         //System.out.println(a.items.length);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addLast(i);
         }
+        a.addFirst(-1);
+        a.addFirst(-2);
         a.printDeque();
-        System.out.println(a.isEmpty());
-        System.out.println(a.removeFirst());
-        a.removeFirst();
-        a.printDeque();
-        a.removeLast();
-        a.printDeque();
-        a.removeLast();
-        a.printDeque();
-        a.removeLast();
-        a.printDeque();
-        a.removeLast();
-        a.removeLast();
-        a.removeLast();
-        a.printDeque();
+        System.out.println(a.get(0));
+//        a.removeFirst();
+//        a.printDeque();
+//        a.removeLast();
+//        a.printDeque();
+//        a.removeLast();
+//        a.printDeque();
+//        a.removeLast();
+//        a.printDeque();
+//        a.removeLast();
+//        a.removeLast();
+//        a.removeLast();
+//        a.removeLast();
+//        a.removeLast();
+//        a.printDeque();
         //System.out.println(t);
 /*        a.addFirst(1);
         System.out.println(a.isEmpty());
