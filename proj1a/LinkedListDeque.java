@@ -21,19 +21,19 @@ public class LinkedListDeque<T> {
         size = 0;
     }*/
 
-/*    public LinkedListDeque(T g) {
+    public LinkedListDeque(T g) {
         sentinel = new Node(null, g, null);
         sentinel.next = sentinel;
         sentinel.pre = sentinel;
         size = 0;
-    }*/
+    }
 
-/*    public void addFirst(T g) {
+    public void addFirst(T g) {
         Node temp = new Node(sentinel, g, sentinel.next);
         sentinel.next = temp;
         sentinel.next.next.pre = temp;
         size += 1;
-    }*/
+    }
 
     public void addLast(T g) {
         Node temp = new Node(sentinel.pre, g, sentinel);
