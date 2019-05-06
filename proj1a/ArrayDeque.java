@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int nextLast;
     private double loadFactor;
 
-    private ArrayDeque() {
+    public ArrayDeque() {
         items = (T[]) new Object[8];
         nextFirst = 5;
         nextLast = 6;
@@ -41,7 +41,7 @@ public class ArrayDeque<T> {
         size = size + 1;
     }
 
-    private void addLast(T item) {
+    public void addLast(T item) {
         //resize();
         if (nextLast >= items.length) {
             nextLast = 0;
@@ -51,16 +51,16 @@ public class ArrayDeque<T> {
         size = size + 1;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return (size == 0);
     }
 
 
-    private int size() {
+    public int size() {
         return size;
     }
 
-    private void printDeque() {
+    public void printDeque() {
         int i = 0;
         for (i = nextFirst + 1; i < nextLast || i < items.length; i++) {
             System.out.print(items[i] + " ");
@@ -75,7 +75,7 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    private T removeFirst() {
+    public T removeFirst() {
         T temp;
         //items[nextFirst + 1] = null;
         if (nextFirst + 1 < items.length) {
@@ -89,7 +89,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    private T removeLast() {
+    public T removeLast() {
         T temp;
         if (nextLast - 1 < 0) {
             nextLast = items.length - 1;
@@ -102,7 +102,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    private T get(int index) {
+    public T get(int index) {
         if (index >= 0 && index < size) {
             T temp = items[index];
             return temp;
