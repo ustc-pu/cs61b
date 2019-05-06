@@ -58,10 +58,10 @@ public class ArrayDeque<T> {
 
     public boolean isEmpty() {
         if (size > 0) {
-            return true;
+            return false;
         }
         else {
-            return false;
+            return true;
         }
     }
 
@@ -128,7 +128,13 @@ public class ArrayDeque<T> {
 
     public static void main(String args[]) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
-        a.addFirst(1);
+        System.out.println(a.items.length);
+        for(int i = 0; i < 8; i++) {
+            a.addLast(1);
+        }
+        a.printDeque();
+/*        a.addFirst(1);
+        System.out.println(a.isEmpty());
         a.addLast(2);
         a.addLast(3);
         a.addLast(4);
@@ -152,7 +158,7 @@ public class ArrayDeque<T> {
        // System.out.println(a.removeFirst());
        // System.out.println(a.removeFirst());
         a.printDeque();
-        System.out.println(a.get(1));
+        System.out.println(a.get(1));*/
     }
 
 }
