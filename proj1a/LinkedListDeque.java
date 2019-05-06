@@ -14,12 +14,12 @@ public class LinkedListDeque<T> {
     private Node sentinel;
     private int size;
 
-/*    public LinkedListDeque() {
+    public LinkedListDeque() {
         sentinel = new Node(null, null, null);
         sentinel.next = sentinel;
         sentinel.pre = sentinel;
         size = 0;
-    }*/
+    }
 
     public LinkedListDeque(T g) {
         sentinel = new Node(null, g, null);
