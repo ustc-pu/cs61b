@@ -57,7 +57,11 @@ public class ArrayDeque<T> {
 
 
     public int size() {
-        return size;
+        if (size > 0) {
+            return size;
+        } else {
+            return 0;
+        }
     }
 
     public void printDeque() {
@@ -108,22 +112,22 @@ public class ArrayDeque<T> {
     public static void main(String[] args)  {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         //System.out.println(a.items.length);
-/*        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             a.addLast(i);
-        }*/
-        a.addLast(0);
-        a.addLast(1);
-        a.addLast(2);
-        a.printDeque();
-        System.out.println(a.get(2));
-        a.addLast(4);
-        a.addLast(5);
-        a.addLast(6);
-        a.addLast(7);
-        a.addLast(8);
-        //a.printDeque();
-        a.addLast(9);
-        a.addLast(10);
+        }
+//        a.addLast(0);
+//        a.addLast(1);
+//        a.addLast(2);
+//        a.printDeque();
+        System.out.println(a.get(0));
+//        a.addLast(4);
+//        a.addLast(5);
+//        a.addLast(6);
+//        a.addLast(7);
+//        a.addLast(8);
+//        //a.printDeque();
+//        a.addLast(9);
+//        a.addLast(10);
         //System.out.println(a.removeLast());
 /*        a.addFirst(1);
         System.out.println(a.isEmpty());
