@@ -23,14 +23,19 @@ public class ArrayDeque<T> {
     }
 
     public void resize() {
-        //loadFactor = (double) size / items.length;
+        loadFactor = (double) size / items.length;
         if (size == items.length) {
             T[] temp = (T[]) new Object[items.length * 2];
-            System.arraycopy(items, nextFirst + 1, temp, 0, items.length - nextFirst - 1);
-            System.arraycopy(items, 0, temp, (nextFirst - 1) & (items.length - 1), nextLast);
+            int first = (nextFirst + 1) & (items.length - 1);
+            System.arraycopy(items, first, temp, 0, items.length - first);
+            System.arraycopy(items, 0, temp, items.length - first, first);
             items = temp;
             nextFirst = items.length - 1;
             nextLast = items.length / 2;
+        }
+
+        if (loadFactor <= 0.25 & items.length > 16) {
+            T[] temp = (T[]) new Object[items.length / 2];
         }
     }
 
@@ -98,7 +103,7 @@ public class ArrayDeque<T> {
 
     //random index or shift from first element?
     public T get(int index) {
-        if (index >= 0 && index < size) {
+        if (index >= 0 && index < items.length) {
             index = (index + nextFirst + 1) & (items.length - 1);
             T temp = items[index];
             return temp;
