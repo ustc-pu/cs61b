@@ -107,7 +107,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
-    //random index or shift from first element?
+    //random index or shift from first element? seems shift from first element
     public T get(int index) {
         if (index >= 0 && index < items.length) {
             index = (index + nextFirst + 1) & (items.length - 1);
@@ -117,55 +117,4 @@ public class ArrayDeque<T> {
             return null;
         }
     }
-
-
-
-    public static void main(String[] args)  {
-        ArrayDeque<Integer> a = new ArrayDeque<>();
-        //System.out.println(a.items.length);
-        for (int i = 0; i < 8; i++) {
-            a.addLast(i);
-        }
-//        a.addLast(0);
-//        a.addLast(1);
-//        a.addLast(2);
-//        a.printDeque();
-        System.out.println(a.get(0));
-//        a.addLast(4);
-//        a.addLast(5);
-//        a.addLast(6);
-//        a.addLast(7);
-//        a.addLast(8);
-//        //a.printDeque();
-//        a.addLast(9);
-//        a.addLast(10);
-        //System.out.println(a.removeLast());
-/*        a.addFirst(1);
-        System.out.println(a.isEmpty());
-        a.addLast(2);
-        a.addLast(3);
-        a.addLast(4);
-        a.addFirst(0);
-        a.addLast(5);
-        //a.addLast(6);
-        a.addFirst(-1);
-        //a.addLast(7);
-        //a.addLast(8);
-        a.printDeque();
-        System.out.println(a.removeLast());
-        a.printDeque();
-        System.out.println(a.removeLast());
-        a.printDeque();
-        System.out.println(a.removeFirst());
-        a.addLast(4);
-        a.addLast(5);
-        System.out.println(a.removeFirst());
-        System.out.println(a.removeFirst());
-        System.out.println(a.removeFirst());
-       // System.out.println(a.removeFirst());
-       // System.out.println(a.removeFirst());
-        a.printDeque();
-        System.out.println(a.get(1));*/
-    }
-
 }
