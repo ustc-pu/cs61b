@@ -23,11 +23,14 @@ public class ArrayDeque<T> {
     }
 
     public void resize() {
-        loadFactor = (double) size / items.length;
-        if (loadFactor >= 0.5) {
+        //loadFactor = (double) size / items.length;
+        if (size == items.length) {
             T[] temp = (T[]) new Object[items.length * 2];
-            System.arraycopy(items, nextFirst, temp, 0, items.length);
+            System.arraycopy(items, nextFirst + 1, temp, 0, items.length - nextFirst - 1);
+            System.arraycopy(items, 0, temp, nextFirst - 1, nextLast);
             items = temp;
+            nextFirst = items.length - 1;
+            nextLast = items.length / 2;
         }
     }
 
@@ -35,20 +38,14 @@ public class ArrayDeque<T> {
     * @source https://www.jianshu.com/p/5763d9c1c321
     * */
     public void addFirst(T item) {
-        //resize();
-/*        if (nextFirst <= 0) {
-            nextFirst = items.length - 1;
-        }*/
+        resize();
         items[nextFirst] = item;
         nextFirst = (nextFirst - 1) & (items.length - 1);
         size = size + 1;
     }
 
     public void addLast(T item) {
-        //resize();
-/*        if (nextLast >= items.length) {
-            nextLast = 0;
-        }*/
+        resize();
         items[nextLast] = item;
         nextLast = (nextLast + 1) & (items.length - 1);
         size = size + 1;
@@ -79,12 +76,6 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        //items[nextFirst + 1] = null;
-/*        if (nextFirst + 1 < items.length) {
-            nextFirst = nextFirst + 1;
-        } else {
-            nextFirst = 0;
-        }*/
         nextFirst = (nextFirst + 1) & (items.length - 1);
         T temp = items[nextFirst];
         items[nextFirst] = null;
@@ -94,11 +85,6 @@ public class ArrayDeque<T> {
 
 
     public T removeLast() {
-/*        if (nextLast - 1 < 0) {
-            nextLast = (items.length - 1);
-        } else {
-            nextLast = nextLast - 1;
-        }*/
         nextLast = (nextLast - 1) & (items.length - 1);
         T temp = items[nextLast];
         items[nextLast] = null;
@@ -125,26 +111,19 @@ public class ArrayDeque<T> {
 /*        for (int i = 0; i < 8; i++) {
             a.addLast(i);
         }*/
-        a.addLast(0);
+        a.addFirst(0);
         a.addFirst(1);
         a.addLast(2);
         a.printDeque();
         System.out.println(a.get(2));
-//        a.removeFirst();
-//        a.printDeque();
-//        a.removeLast();
-//        a.printDeque();
-//        a.removeLast();
-//        a.printDeque();
-//        a.removeLast();
-//        a.printDeque();
-//        a.removeLast();
-//        a.removeLast();
-//        a.removeLast();
-//        a.removeLast();
-//        a.removeLast();
-//        a.printDeque();
-        //System.out.println(t);
+        a.addFirst(4);
+        a.addLast(5);
+        a.addLast(6);
+        a.addLast(7);
+        a.addFirst(8);
+        a.printDeque();
+        a.addFirst(9);
+        System.out.println(a.removeLast());
 /*        a.addFirst(1);
         System.out.println(a.isEmpty());
         a.addLast(2);
