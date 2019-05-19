@@ -119,23 +119,4 @@ public class LinkedListDeque<T> {
         }
 
     }
-
-/**
-    public static void main(String[] args) {
-        LinkedListDeque<String> d = new LinkedListDeque();
-        d.addFirst("2");
-        d.addFirst("1");
-        d.addLast("3");
-        System.out.println(d.size());
-        d.printDeque();
-        //Gene g = d.removeFirst();
-        System.out.println(d.removeFirst());
-        //System.out.println(d.removeLast());
-        d.printDeque();
-        //d.removeFirst();
-        //d.removeFirst();
-        System.out.println(d.getRecursive(0));
-
-    }
- */
 }
