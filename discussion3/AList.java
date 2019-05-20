@@ -8,7 +8,7 @@ public class AList<Item> {
 
     /** Creates an empty list. */
     public AList() {
-        items = (Item[]) new Object[100];
+        items = (Item[]) new Object[8];
         size = 0;
     }
 
@@ -33,12 +33,12 @@ public class AList<Item> {
     }
     /** Gets the ith item in the list (0 is the front). */
     public Item get(int i) {
-        return items[i];        
+        return items[i];
     }
 
     /** Returns the number of items in the list. */
     public int size() {
-        return size;        
+        return size;
     }
 
     /** Deletes item from back of the list and
@@ -50,11 +50,54 @@ public class AList<Item> {
         return a;
     }
 
+    public void insert(Item[] arr, Item item, int position) {
+        if (this.size == arr.length) {
+            resize(size * 2);
+        }
+        if (position >= size) {
+            this.addLast(item);
+        }
+        if (position >= 0 & position < size) {
+            int count = size;
+            while (count != position) {
+                arr[count] = arr[count - 1];
+                count = count - 1;
+            }
+            arr[position] = item;
+        }
+        size = size + 1;
+    }
+
+    public void reverse() {
+        Item[] arr = this.items;
+        int mid = this.size / 2;
+        for(int j = 0; j < mid; j++) {
+            swap(arr, j, this.size - 1 - j);
+        }
+    }
+
+    public void swap(Item[] arr, int i, int j) {
+        Item temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+ /*   public Item[] replicate() {
+        Item[] arr = this.items;
+        for(int i = 0; i < this.size; i++) {
+            for(int j = 0; j < items[i]; j++) {
+                insert(arr, items[i], i);
+            }
+        }
+    }*/
+
     public static void main(String[] args) {
-        AList<Integer> a = new AList<Integer>[10];
-        System.out.println(a.items.length);
+        AList a = new AList();
+        //System.out.println(a.items.length);
         a.addLast(2);
         a.addLast(10);
+        a.insert(a.items, 100, 0);
+        a.reverse();
         System.out.print(a.getLast());
     }
-} 
+}

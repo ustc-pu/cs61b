@@ -45,11 +45,10 @@ public class SLList {
     }
 
     public void addLast(int x, IntNode p) {
-        if(p.next == null) {
+        if (p.next == null) {
             p.next = new IntNode(x, null);
             size = size + 1;
-        }
-        else {
+        } else {
             addLast(x, p.next);
         }
     }
@@ -63,13 +62,12 @@ public class SLList {
         IntNode newNode = new IntNode(x, null);
         IntNode temp = sentinel;
         int count = 0;
-        while(temp.next != null) {
-            if(count == position) {
+        while (temp.next != null) {
+            if (count == position) {
                 newNode.next = temp.next;
                 temp.next = newNode;
-                return ;
-            }
-            else {
+                return;
+            } else {
                 count = count + 1;
                 temp = temp.next;
             }
@@ -83,10 +81,9 @@ public class SLList {
     }
 
     public IntNode reverse(IntNode p) {
-        if(p == null || p.next == null) {
+        if (p == null || p.next == null) {
             return p;
-        }
-        else {
+        } else {
             IntNode reversed = reverse(p.next);
             p.next.next = p;
             p.next = null;
@@ -95,12 +92,12 @@ public class SLList {
     }
 
     public void reverseInteratively() {
-        if(sentinel.next == null || sentinel == null) {
-            return ;
+        if (sentinel.next == null || sentinel == null) {
+            return;
         }
         IntNode cur = sentinel.next;
         sentinel.next = null;
-        while(cur != null) {
+        while (cur != null) {
             IntNode temp = cur.next;
             cur.next = sentinel;
             sentinel = cur;
@@ -132,8 +129,8 @@ public class SLList {
         L.addLast(20);
         System.out.println(L.size());
         L.addFirst(10);
-        L.insert(5,1);
-        L.reverseInteratively();
+        L.insert(5, 12);
+        L.reverse();
         System.out.println(L.getFirst());
     }
 }
