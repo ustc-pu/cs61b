@@ -46,6 +46,42 @@ public class IntList {
 		}
 	}
 
+	public void addLast(int x) {
+		IntList list = this;
+		if(list.rest == null) {
+			list.rest = new IntList(x, null);
+		}
+		else{
+			list.rest.addLast(x);
+		}
+	}
+
+	/**simplified version of square*/
+	public static IntList squareList(IntList list) {
+		if (list == null) {
+			return list;
+		}
+		else{
+			return new IntList(list.first*list.first, squareList(list.rest));
+		}
+	}
+
+	/**return a new IntList and its element is squared using non recursion*/
+	public static IntList squareIteration(IntList list) {
+		if(list == null) {
+			return list;
+		}
+		IntList res = new IntList(list.first * list.first, null);
+		IntList ptr = res;
+		list = list.rest;
+		while(list != null) {
+			ptr.rest = new IntList(list.first * list.first, null);
+			ptr = ptr.rest;
+			list = list.rest;
+		}
+		return res;
+	}
+
 	/**return a IntList and its element is squared using non recursion*/
 	public static IntList squareMutative(IntList list) {
 		IntList b = list;
@@ -60,8 +96,10 @@ public class IntList {
 		IntList L = new IntList(15, null);
 		L = new IntList(10, L);
 		L = new IntList(5, L);
-		//IntList m = square(L);
-		squareMutative(L);
-		System.out.println(L.get(2));
+		IntList m = squareIteration(L);
+		//squareMutative(L);
+		L.addLast(23);
+		L.addLast(19);
+		System.out.println(L.get(4));
 	}
 } 
