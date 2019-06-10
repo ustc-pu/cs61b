@@ -59,10 +59,12 @@ public class AList<Item> {
         }
         if (position >= 0 & position < size) {
             int count = size;
+            // put elements backwards
             while (count != position) {
                 arr[count] = arr[count - 1];
                 count = count - 1;
             }
+            // put item in position
             arr[position] = item;
         }
         size = size + 1;
