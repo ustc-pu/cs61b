@@ -13,5 +13,5 @@ public interface Deque<Item> {
 
     public Item removeLast() ;
 
-    public Item get() ;
+    public Item get(int index) ;
 }
