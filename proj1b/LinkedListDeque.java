@@ -114,6 +114,19 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         System.out.println();
     }
 
+    public boolean isPalindrome(Deque d) {
+        if (d.size() == 0 || d.size() == 1) {
+            return true;
+        }
+        else if (d.removeFirst() != d.removeLast()) {
+            return false;
+        }
+        else {
+            isPalindrome(d);
+        }
+        return true;
+    }
+
     /*@source https://www.youtube.com/watch?v=JNroRiEG7U4*/
     public LinkedListDeque(LinkedListDeque<Item> other) {
         sentinel = new Node(null, null, null);

@@ -14,4 +14,6 @@ public interface Deque<Item> {
     public Item removeLast() ;
 
     public Item get(int index) ;
+
+    public boolean isPalindrome(Deque d) ;
 }
