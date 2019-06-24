@@ -114,6 +114,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         System.out.println();
     }
 
+    @Override
     public boolean isPalindrome(Deque d) {
         if (d.size() == 0 || d.size() == 1) {
             return true;
@@ -123,6 +124,20 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         }
         else {
             isPalindrome(d);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isPalindrome(Deque d, CharacterComparator cc) {
+        if (d.size() == 0 || d.size() == 1) {
+            return true;
+        }
+        else if ( ! cc.equalChars(d.removeFirst().toString().charAt(0), d.removeLast().toString().charAt(0)) ) {
+            return false;
+        }
+        else {
+            isPalindrome(d, cc);
         }
         return true;
     }
