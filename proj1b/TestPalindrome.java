@@ -17,18 +17,31 @@ public class TestPalindrome {
         assertEquals("persiflage", actual);
     }
 
+//    @Test
+//    public void testisPalindrome() {
+//        Boolean actual1 = palindrome.isPalindrome("cats");
+//        assertEquals(false, actual1);
+//
+//        Boolean actual2 = palindrome.isPalindrome("noon");
+//        assertEquals(true, actual2);
+//
+//        Boolean actual3 = palindrome.isPalindrome("Aa");
+//        assertEquals(false, actual3);
+//
+//        Boolean actual4 = palindrome.isPalindrome(" ");
+//        assertEquals(true, actual4);
+//    }
+
     @Test
     public void testisPalindrome() {
-        Boolean actual1 = palindrome.isPalindrome("cats");
-        assertEquals(false, actual1);
+        CharacterComparator cc = new OffByOne();
+        boolean actual1 = palindrome.isPalindrome("flake", cc);
+        assertEquals(true, actual1);
 
-        Boolean actual2 = palindrome.isPalindrome("noon");
+        boolean actual2 = palindrome.isPalindrome("a", cc);
         assertEquals(true, actual2);
 
-        Boolean actual3 = palindrome.isPalindrome("Aa");
+        boolean actual3 = palindrome.isPalindrome("aba", cc);
         assertEquals(false, actual3);
-
-        Boolean actual4 = palindrome.isPalindrome(" ");
-        assertEquals(true, actual4);
     }
 }
