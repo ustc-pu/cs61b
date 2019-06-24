@@ -13,7 +13,15 @@ public class Palindrome {
     public boolean isPalindrome(String word) {
         Palindrome p = new Palindrome();
         Deque d = p.wordToDeque(word);
-        Boolean b = d.isPalindrome(d);
+        boolean b = d.isPalindrome(d);
         return b;
     }
+
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        Palindrome p = new Palindrome();
+        Deque d = p.wordToDeque(word);
+        return d.isPalindrome(d, cc);
+        //return true;
+    }
+
 }
