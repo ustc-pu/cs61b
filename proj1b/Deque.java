@@ -16,4 +16,6 @@ public interface Deque<Item> {
     public Item get(int index) ;
 
     public boolean isPalindrome(Deque d) ;
+
+    public boolean isPalindrome(Deque d, CharacterComparator cc) ;
 }
