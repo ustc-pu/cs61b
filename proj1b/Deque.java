@@ -1,21 +1,21 @@
 public interface Deque<Item> {
-    public void addFirst(Item item) ;
+    void addFirst(Item item);
 
-    public void addLast(Item item) ;
+    void addLast(Item item);
 
-    public boolean isEmpty() ;
+    boolean isEmpty();
 
-    public int size() ;
+    int size();
 
-    public void printDeque() ;
+    void printDeque();
 
-    public Item removeFirst() ;
+    Item removeFirst();
 
-    public Item removeLast() ;
+    Item removeLast();
 
-    public Item get(int index) ;
+    Item get(int index);
 
-    public boolean isPalindrome(Deque d) ;
+    boolean isPalindrome(Deque d);
 
-    public boolean isPalindrome(Deque d, CharacterComparator cc) ;
+    boolean isPalindrome(Deque d, CharacterComparator cc);
 }

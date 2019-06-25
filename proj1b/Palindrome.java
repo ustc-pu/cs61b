@@ -3,7 +3,7 @@ public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
 //      the signature of an interface object Interface obj = new Class
         Deque<Character> d = new LinkedListDeque();
-        for(int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             char temp = word.charAt(i);
             d.addLast(temp);
         }
