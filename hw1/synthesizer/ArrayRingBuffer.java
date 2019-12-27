@@ -54,7 +54,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue {
         if(fillCount == 0)
             throw new RuntimeException("Ring buffer underflow");
         T res = rb[first];
-        first = (first - 1 + capacity) % capacity;
+        first = (first + 1 + capacity) % capacity;
         fillCount = fillCount - 1;
         return res;
     }
@@ -66,7 +66,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue {
         // TODO: Return the first item. None of your instance variables should change.
         if(fillCount == 0)
             throw new RuntimeException("Ring buffer underflow");
-        return rb[(last - 1 + capacity) % capacity];
+        return rb[first];
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
