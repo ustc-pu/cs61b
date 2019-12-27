@@ -18,9 +18,15 @@ public class TestArrayRingBuffer {
 //        arb.enqueue(5);
 //        Assert.assertEquals();
 //        arb.dequeue();
-        Assert.assertEquals(2, arb.peek());
+        Assert.assertEquals(1, arb.peek());
         Assert.assertEquals(1, arb.dequeue());
         Assert.assertEquals(2, arb.dequeue());
+    }
+
+    @Test
+    public void test1() {
+        AbstractBoundedQueue<Integer> abq = new ArrayRingBuffer<>(100);
+        Assert.assertTrue("false", abq.isEmpty());
     }
 
     /** Calls tests for ArrayRingBuffer. */
