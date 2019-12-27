@@ -1,8 +1,6 @@
-// TODO: Make sure to make this class a part of the synthesizer package
 package synthesizer;
-import org.omg.SendingContext.RunTime;
-
 import java.util.Iterator;
+import org.omg.SendingContext.RunTime;
 
 //TODO: Make sure to make this class and all of its methods public
 //TODO: Make sure to make this class extend AbstractBoundedQueue<t>
@@ -35,6 +33,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * throw new RuntimeException("Ring buffer overflow"). Exceptions
      * covered Monday.
      */
+    @Override
     public void enqueue(T x) throws RuntimeException {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
         if(fillCount == capacity)
@@ -49,6 +48,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * throw new RuntimeException("Ring buffer underflow"). Exceptions
      * covered Monday.
      */
+    @Override
     public T dequeue() throws RuntimeException {
         // TODO: Dequeue the first item. Don't forget to decrease fillCount and update
         if(fillCount == 0)
@@ -62,6 +62,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /**
      * Return oldest item, but don't remove it.
      */
+    @Override
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
         if(fillCount == 0)
@@ -69,26 +70,28 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return rb[first];
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return null;
-    }
+
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
+    //    @Override
+    public Iterator<T> iterator() {
+        return this.new BufferIterator();
+    }
     public class BufferIterator implements Iterator<T> {
         public int ptr;
+
         public BufferIterator() {
             ptr = 0;
         }
 
-        @Override
         public boolean hasNext() {
             return fillCount == 0;
         }
 
-        @Override
         public T next() {
-            return peek();
+            T res = rb[ptr];
+            ptr = ptr + 1;
+            return res;
         }
 
     }
