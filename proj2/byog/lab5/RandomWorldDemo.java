@@ -44,6 +44,10 @@ public class RandomWorldDemo {
         }
     }
 
+    public void addHexagon(TETile[][] world, Position p, int s, TETile t) {
+
+    }
+
     public static void main(String[] args) {
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
@@ -52,7 +56,25 @@ public class RandomWorldDemo {
         fillWithRandomTiles(randomTiles);
 
         ter.renderFrame(randomTiles);
+
+        Random r = new Random(15);
+        System.out.println(r.nextInt());
+        System.out.println(r.nextInt());
+        System.out.println(r.nextInt());
+
+        r = new Random(16);
+        System.out.println(r.nextInt());
+        System.out.println(r.nextInt());
+        System.out.println(r.nextInt());
     }
 
+    class Position {
+        int x;
+        int y;
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 
 }
