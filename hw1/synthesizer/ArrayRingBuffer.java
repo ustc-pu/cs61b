@@ -1,5 +1,5 @@
 // TODO: Make sure to make this class a part of the synthesizer package
- package synthesizer;
+package synthesizer;
 import org.omg.SendingContext.RunTime;
 
 import java.util.Iterator;
@@ -70,4 +70,21 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue {
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
+    public class BufferIterator implements Iterator<T> {
+        public int ptr;
+        public BufferIterator() {
+            ptr = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return fillCount == 0;
+        }
+
+        @Override
+        public T next() {
+            return peek();
+        }
+
+    }
 }
