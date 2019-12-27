@@ -1,6 +1,6 @@
 package synthesizer;
 import java.util.Iterator;
-//import org.omg.SendingContext.RunTime;
+import org.omg.SendingContext.RunTime;
 
 //Make sure to make this class and all of its methods public
 //Make sure to make this class extend AbstractBoundedQueue<t>
@@ -36,7 +36,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public void enqueue(T x) throws RuntimeException {
         // Enqueue the item. Don't forget to increase fillCount and update last.
-        if (fillCount == capacity){
+        if (fillCount == capacity) {
             throw new RuntimeException("Ring buffer overflow");
         }
         rb[last] = x;
@@ -52,7 +52,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public T dequeue() throws RuntimeException {
         // Dequeue the first item. Don't forget to decrease fillCount and update
-        if (fillCount == 0){
+        if (fillCount == 0) {
             throw new RuntimeException("Ring buffer underflow");
         }
         T res = rb[first];
@@ -67,7 +67,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public T peek() {
         // Return the first item. None of your instance variables should change.
-        if (fillCount == 0){
+        if (fillCount == 0) {
             throw new RuntimeException("Ring buffer underflow");
         }
         return rb[first];
