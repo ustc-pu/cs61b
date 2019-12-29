@@ -1,6 +1,8 @@
 package synthesizer;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Iterator;
 //import static org.junit.Assert.*;
 //
 /** Tests the ArrayRingBuffer class.
@@ -28,9 +30,29 @@ public class TestArrayRingBuffer {
         AbstractBoundedQueue<Integer> abq = new ArrayRingBuffer<>(100);
         Assert.assertTrue("false", abq.isEmpty());
     }
+//
+//    @Test
+//    public void test2() {
+//        ArrayRingBuffer arb = new ArrayRingBuffer(2);
+//        arb.enqueue(1);
+//        arb.enqueue(2);
+//        Iterator<Integer> ite = arb.iterator();
+//        while(ite.hasNext()) {
+//            System.out.println(ite.next());
+////            Assert.assertEquals();
+//        }
+//    }
 
     /** Calls tests for ArrayRingBuffer. */
     public static void main(String[] args) {
         jh61b.junit.textui.runClasses(TestArrayRingBuffer.class);
+        ArrayRingBuffer arb = new ArrayRingBuffer(2);
+        arb.enqueue(1);
+        arb.enqueue(2);
+        Iterator<Integer> ite = arb.iterator();
+        System.out.println(arb.fillCount);
+        while(ite.hasNext()) {
+            System.out.println(ite.next());
+        }
     }
 } 
