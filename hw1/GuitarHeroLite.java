@@ -22,7 +22,7 @@ public class GuitarHeroLite {
 
         /* compute the superposition of samples */
             double sample = stringA.sample() + stringC.sample();
-
+//            double sample = stringA.sample();
         /* play the sample on standard audio */
             StdAudio.play(sample);
 
